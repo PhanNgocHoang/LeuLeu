@@ -6,6 +6,7 @@ const componentIndex = {
           </nav>
           <main>
               <div id='login' class="show">
+              <form id='form-login'>
                   <div>
                       <div>
                           <input type="email" name="email" placeholder="Email or Username">
@@ -26,8 +27,9 @@ const componentIndex = {
                   <div id="login-error" class="login-error"></div>
                   <div>
                       <a href="#">Not yet have an account? Register</a>
-                      <button id="login-btn">Log in</button>
+                      <button id="login-btn" type="submit">Log in</button>
                   </div>
+                  </form>
               </div>
           </main>
       </div>`,
@@ -37,9 +39,18 @@ const componentIndex = {
               <div class="signup">Register</div>
           </nav>
           <main>
+          <form id="register-form">
               <div id='signup' class="show">
+              <div>
+                    <input type="text" name="nickname" placeholder="Your Nick Name">
+                    <div class="message-error" id="email-error"></div>
+              </div>
+                 <div>
+                      <input type="email" name="email" placeholder="Email">
+                      <div class="message-error" id="email-error"></div>
+                  </div>
                   <div>
-                      <input type="email" name="email" placeholder="Email or Username">
+                      <input type="date" name="dayofbirth" placeholder="Your Day of birth">
                       <div class="message-error" id="email-error"></div>
                   </div>
                   <div>
@@ -54,9 +65,10 @@ const componentIndex = {
                   <div id="register-error" class="message-error"></div>
                   <div>
                       <a href="#">Already have an account? Login</a>
-                      <button id="signup-btn">Sign up</button>
+                      <button id="signup-btn" type="submit">Sign up</button>
                   </div>
               </div>
+              </form>
           </main>
       </div>
       `,
