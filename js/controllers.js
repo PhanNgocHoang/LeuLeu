@@ -18,18 +18,20 @@ const controllers = {
         }
     },
     login: async (loginInfo) => {
-        
-        alert(loginInfo)
-        // try{
-        //     let result = await firebase.auth().signInWithEmailAndPassword(email, password)
-        //     if(result.user && result.user.emailVerified){
-
-        //     }
-        //     else{
-        //         throw new Error('Email must verified')
-        //     }
-        // } catch (Error) {
-
-        // }
+        let email = loginInfo.email
+        let password = loginInfo.password
+        utils.setText('#login-message', '')
+        utils.disabledButton('#login-btn')
+        try{
+            let result = await firebase.auth().signInWithEmailAndPassword(email, password)
+            if(result.user && result.user.emailVerified){
+                alert('OK login success')
+            }
+            else{
+                throw new Error('Email must verified')
+            }
+        } catch (Error) {
+            utils.setText('#login-message', Error.message)
+        }
     }
 }

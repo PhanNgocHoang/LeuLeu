@@ -120,3 +120,9 @@ a{
 button{
   background-color: #fbf6f3;
 }
+.message-error{
+  color: #ff6666
+}
+.login-message{
+  color: #ff6666
+}

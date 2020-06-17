@@ -23,8 +23,7 @@ const componentIndex = {
                           <label for="remember-me">Remember me</label>
                       </div>
                   </div>
-                  <div id="login-success" class="login-success"></div>
-                  <div id="login-error" class="login-error"></div>
+                  <div id="login-message" class="login-message"></div>
                   <div>
                       <a href="#">Not yet have an account? Register</a>
                       <button id="login-btn" type="submit">Log in</button>
@@ -43,7 +42,7 @@ const componentIndex = {
               <div id='signup' class="show">
               <div>
                     <input type="text" name="nickname" placeholder="Your Nick Name">
-                    <div class="message-error" id="email-error"></div>
+                    <div class="message-error" id="nickname-error"></div>
               </div>
                  <div>
                       <input type="email" name="email" placeholder="Email">
@@ -51,14 +50,14 @@ const componentIndex = {
                   </div>
                   <div>
                       <input type="date" name="dayofbirth" placeholder="Your Day of birth">
-                      <div class="message-error" id="email-error"></div>
+                      <div class="message-error" id="birth-error"></div>
                   </div>
                   <div>
                       <input type="password" name="password" placeholder="Password">
                       <div class="message-error" id="password-error"></div>
                   </div>
                   <div>
-                      <input type="password" name="confirm-password" placeholder="Confirm password">
+                      <input type="password" name="confirmPassword" placeholder="Confirm password">
                       <div class="message-error" id="confirm-password-error"></div>
                   </div>
                   <div id="register-success" class="message-success"></div>

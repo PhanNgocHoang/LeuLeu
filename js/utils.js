@@ -19,7 +19,7 @@ const utils = {
         document.querySelector(idtag).removeAttribute('disabled')
     },
     disabledButton:(idtag)=>{
-        document.querySelector(idtag).addAttribute('disabled', true)
+        document.querySelector(idtag).setAttribute('disabled', true)
     },
     formatDate:(date)=>{
         return new Date(date).toLocaleDateString()
