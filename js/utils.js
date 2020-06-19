@@ -1,4 +1,12 @@
 const utils = {
+    getDataFromDoc(doc){
+        let data = doc.data()
+        data.id = doc.id
+        return data
+    },
+    getDataFromDocs(docs){
+        return docs.map(this.getDataFromDoc)
+    },
     validateData:(condition, errorTag, messageError)=>{
         if(condition){
             document.querySelector(errorTag).innerHTML = ''
@@ -24,12 +32,4 @@ const utils = {
     formatDate:(date)=>{
         return new Date(date).toLocaleDateString()
     },
-    getDataFromDoc:(doc)=>{
-        let data = doc.data
-        data = doc.id
-        return data
-    },
-    getDataFromDocs:(docs)=>{
-        return docs.map(this.getDataFromDoc)
-    }
 }

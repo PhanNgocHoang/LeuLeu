@@ -1,0 +1,19 @@
+/* Main */
+
+body{
+    background-color: #f2f2f2;
+}
+a:hover{
+    color: #ffffff;
+    text-decoration-line: none;
+}
+
+/* Icon */
+.fa{
+    font-size: 24px;
+}
+
+/* Body */
+.body{
+    display: flex;
+}

@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
-body {background: url('../images/luca-bravo-O453M2Liufs-unsplash.jpg') no-repeat;background-size: cover
-}
 .container {
   background: rgba(0, 0, 0, 0.2);
   font-family: 'Lato', sans-serif;
@@ -8,6 +6,7 @@ body {background: url('../images/luca-bravo-O453M2Liufs-unsplash.jpg') no-repeat
   margin: 50px auto;
   border-radius: 5px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.2);
+  background: url('../images/luca-bravo-O453M2Liufs-unsplash.jpg') no-repeat;background-size: cover
 }
 
 nav.auth{

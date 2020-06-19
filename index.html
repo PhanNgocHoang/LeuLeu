@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- W3school -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Font awesome 4-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/emojionearea.min.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/body_left.css">
+    <link rel="stylesheet" href="/css/body_center.css">
+    <link rel="stylesheet" href="/css/navigation_bar.css">
     <script src="https://cdn.rawgit.com/ashleighy/emoji.js/master/emoji.js.js"></script>
     <script src="/js/emojionearea.js"></script>
   <script src="/js/main.js"></script>
@@ -14,9 +31,12 @@
   <script src="/js/utils.js"></script>
   <script src="/js/controllers.js"></script>
   <script src="/compoments/compoment.index.js"></script>
+  <script src="/compoments/compoment.home.js"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-storage.js"></script>
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -30,6 +50,10 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  
+  async function getImage() {
+    let image = await firebase.storage().ref('avatar/avatar-boy.jpg').getDownloadURL();
+  }
 </script>
     <title>MXH</title>
 </head>

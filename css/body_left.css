@@ -1,0 +1,103 @@
+/* responsive */
+@media screen and (max-width: 1100px){
+    .list-friend{
+        display: none;
+    }
+}
+
+/* Body left */
+
+.list-friend{
+    position: fixed;
+    width: 20%;
+    overflow: hidden;
+    max-height: 665px;
+    margin-top: 50px;
+}
+
+/* title list friend */
+.title-listFriend{
+    background-color: #ffffff;
+    height: 40px;
+    margin-top: 15px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+.title-listFriend>span{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* body list friend */
+.body-listFriend{
+    max-height: 665px;
+}
+.body-listFriend:hover{
+    overflow-y: scroll;
+}
+.friendInfo{
+    display: flex;
+    justify-content: flex-start;
+}
+.friendInfo>span{
+    padding-top: 20px;
+}
+.friendPicture>img{
+    width: 40px;
+    height: 40px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    margin-top: 15px;
+}
+.friendInfoBtn{
+    padding: 0px 0px 0px 10px;
+    border: none;
+    width: 100%;
+    background-color: #ffffff;
+}
+.friendInfoBtn:hover{
+    background-color: #28a745;
+}
+.friendInfoBtn>.card-body{
+    background-color: #ffffff;
+    height: 65px;
+    padding: 0px 0px 0px 0px;
+}
+.friendInfoBtn>.card-body:hover{
+    background-color: #b5eec2;
+}
+.friendInfoBtn>.card-body>.row{
+    padding: 0px 0px 10px 0px;
+    margin-right: 0px;
+}
+.friendInfoBtn>.card-body>.row:hover{
+    margin-left: 15px;
+}
+
+/* action friend */
+.list-friend>.body-listFriend>div>.your-friend>.action{
+    width: 100%;
+    height: 100px;
+}
+.list-friend>.body-listFriend>div>.your-friend>.action>.btn-action{
+    height: 50px;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    border: none;
+    background-color: #ffffff;
+    display: flex;
+}
+.btn-action>.left{
+    width: 30%;
+    margin-top: 10px;
+}
+.btn-action>.right{
+    width: 60%;
+    margin-top: 15px;
+}
+.list-friend>.body-listFriend>div>.your-friend>.action>.btn-action:hover{
+    color: #28a745;
+}

@@ -8,7 +8,7 @@ const controllers = {
         try {
             await firebase.auth().createUserWithEmailAndPassword(email, password)
             await firebase.auth().currentUser.updateProfile({
-                nickname: nickname,
+                displayName: nickname,
                 dayofbirth: dayofbirth,
                 avatar: avatar
             })
@@ -25,13 +25,59 @@ const controllers = {
         try{
             let result = await firebase.auth().signInWithEmailAndPassword(email, password)
             if(result.user && result.user.emailVerified){
-                alert('OK login success')
+                view.showScreens('home')
             }
             else{
                 throw new Error('Email must verified')
             }
         } catch (Error) {
             utils.setText('#login-message', Error.message)
+        }
+    },
+    loadListFriends: async(currentUser)=>{
+        let result = await firebase.firestore()
+            .collection('Friends')
+            .where('user', 'array-contains',currentUser)
+            .get()
+        let friends = utils.getDataFromDocs(result.docs)  
+        for (const friend of friends) {
+            if(friend.status == true) {
+                models.saveListFriends(friend.user)
+            }
+        }
+    },
+    loadPost: async()=>{
+        let friends = models.listFriends
+        let posts = [];
+        for(let i = 0; i < friends.length; i++) {
+
+            let friendPosts = await firebase.firestore()
+                .collection('Post')
+                .where('owner', '==', friends[i])
+                .get()
+            for (let friendPost of friendPosts.docs) {
+                posts.push(friendPost.data());
+            }
+        }
+        models.saveListPost(posts);
+    },
+    createPost: async(postInfo) => {
+        let newPost = {
+            content :postInfo.content,
+            backgroundColor :"".concat(postInfo.background),
+            textColor :"".concat(postInfo.textColor),
+            owner : firebase.auth().currentUser.email,
+            createAt : new Date().toISOString(),
+            like : [],
+            comment : [],
+            image : ""
+        }
+        try {
+            await firebase.firestore()
+                .collection('Post')
+                .add(newPost)
+        }catch(err){
+            console.log(err)
         }
     }
 }
