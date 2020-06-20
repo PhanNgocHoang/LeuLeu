@@ -56,7 +56,7 @@ const controllers = {
                 .where('owner', '==', friends[i])
                 .get()
             for (let friendPost of friendPosts.docs) {
-                posts.push(friendPost.data());
+                posts.push(utils.getDataFromDoc(friendPost));
             }
         }
         models.saveListPost(posts);
@@ -79,5 +79,11 @@ const controllers = {
         }catch(err){
             console.log(err)
         }
-    }
+    },
+    getComment: (postInfo)=>{
+        let Posts = models.listPost
+        let comment = Posts.find(post=>post.id == postInfo.id)
+        models.saveCurrentPost(comment.comment)
+    },
+
 }
