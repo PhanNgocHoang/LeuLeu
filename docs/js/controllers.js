@@ -8,7 +8,18 @@ const controllers = {
                     displayName: userInfo.nickname,
                     photoURL: avatar
                 })
+                let userRegister ={
+                    nickname: userInfo.nickname,
+                    userAvatar: avatar,
+                    userDoB: userInfo.dayofbirth,
+                    userEmail: userInfo.email,
+                    userGender: userInfo.gender
+                }
+                await firebase.firestore()
+                    .collection("Users")
+                    .add(userRegister)
                 await firebase.auth().currentUser.sendEmailVerification()
+                alert('Bạn đã đăng ký thành công, vui long truy cập email để xác thực')
             } catch (err) {
                 alert(err.message)
             }
@@ -21,7 +32,18 @@ const controllers = {
                     displayName: userInfo.nickname,
                     photoURL: avatar
                 })
+                let userRegister ={
+                    nickname: userInfo.nickname,
+                    userAvatar: avatar,
+                    userDoB: userInfo.dayofbirth,
+                    userEmail: userInfo.email,
+                    userGender: userInfo.gender
+                }
+                await firebase.firestore()
+                    .collection("Users")
+                    .add(userRegister)
                 await firebase.auth().currentUser.sendEmailVerification()
+                alert('Bạn đã đăng ký thành công, vui long truy cập email để xác thực')
             } catch (err) {
                 alert(err.message)
             }
