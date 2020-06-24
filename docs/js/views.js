@@ -69,6 +69,7 @@ const view = {
                 await controllers.loadListFriends(email)
                 await controllers.loadPost(email)
                 await controllers.listFriendsInfo()
+                await controllers.getUserProfile()
                 let buttonCreatePost = document.querySelector('.createPostBtn')
                 buttonCreatePost.onclick = (event) => {
                     event.preventDefault()
@@ -188,7 +189,7 @@ const view = {
                             id: userPost.getAttribute('postId'),
                         }
                         controllers.getComment(postInfo)
-                        await view.showComment(models.currentPost)
+                        await view.showComment(models.currentPost, models.userInfo)
                         let formCmt = userPost.querySelector('#commentForm')
                         formCmt.onsubmit = (event) => {
                             event.preventDefault()
@@ -511,7 +512,7 @@ const view = {
             }
         }
     },
-    showComment(post) {
+    showComment(post, userInfo) {
         let userPost = document.querySelector('div[postId=' + post.id + ']')
         let allComment = userPost.querySelector('.allComment')
         let html = `
@@ -529,17 +530,17 @@ const view = {
         </div>
         <div class="otherComment">
         `;
-
         for (let comment of post.comment) {
+            let userComment = userInfo.find(ownerComment => ownerComment.userEmail == comment.commentOwner)
             html += `
             <div class="comment-user-1">
                 <div class="left-comment">
                     <div class="userImgComment">
-                        <img src="https://scontent.fhph1-2.fna.fbcdn.net/v/t1.0-9/100906661_10157758034774234_2781386823492522160_o.jpg?_nc_cat=1&_nc_sid=8024bb&_nc_oc=AQkNkxKvbJex-lLw1YlA8LwTvOwkC3wQB87g7BwRLP3Y3URIdUQSPyu6xJ42cKC3QLE&_nc_ht=scontent.fhph1-2.fna&oh=82e8de58b57e43ee0b6c5a8e87ff6e67&oe=5F05D598" alt="">
+                        <img src="${userComment.userAvatar}" alt="">
                     </div>
                     <div>
                         <div class="content-comment">
-                            <a href="#" class="name">${comment.commentOwner}</a>
+                            <a href="#" class="name">${userComment.nickName}</a>
                             <span>${comment.commentContent}</span>
                         </div>
                         <div class="react-comment">

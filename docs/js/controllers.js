@@ -237,5 +237,11 @@ const controllers = {
         let fileLink = await firebase.storage().ref(filePath).getDownloadURL()
         return fileLink
     },
-
+    getUserProfile: async()=>{
+        let allUser = await firebase.firestore()
+            .collection('Users')
+            .get()
+        let result = utils.getDataFromDocs(allUser.docs)
+        models.saveUserInfo(result)
+    }
 }

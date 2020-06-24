@@ -6,6 +6,7 @@ const models = {
     userInfo: null,
     friendInfo: null,
     searchResults: null,
+    userInfo: null,
     saveListFriends(listFriends){
         models.listFriends = listFriends;
     },
@@ -23,5 +24,8 @@ const models = {
     },
     saveSearchResults(searchResults){
         models.searchResults = searchResults;
+    },
+    saveUserInfo(userInfo){
+        models.userInfo = userInfo;
     }
 }
