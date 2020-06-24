@@ -545,8 +545,7 @@
 }
 .contentPreview{
     word-break: break-word;
-    background-color: tomato;
-    color: #ffffff;
+    color: #000000;
     width: 100%;
     padding: 10px;
     padding-bottom: 20px;

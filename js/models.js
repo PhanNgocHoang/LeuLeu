@@ -2,8 +2,10 @@ const models = {
     listFriends: null,
     listPost: null,
     currentPost: null,
-    listFriendsFalse: null,
+    listFriendsDisAgr: null,
     userInfo: null,
+    friendInfo: null,
+    searchResults: null,
     saveListFriends(listFriends){
         models.listFriends = listFriends;
     },
@@ -13,7 +15,13 @@ const models = {
     saveCurrentPost(post){
         models.currentPost = post;
     },
-    saveListFriendsFalse(listFriends){
-        models.listFriendsFalse = listFriends;
+    saveListFriendsDisAgr(listFriends){
+        models.listFriendsDisAgr = listFriends;
+    },
+    saveFriendInfo(friendInfo){
+        models.friendInfo = friendInfo;
+    },
+    saveSearchResults(searchResults){
+        models.searchResults = searchResults;
     }
 }

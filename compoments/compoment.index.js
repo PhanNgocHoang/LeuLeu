@@ -41,24 +41,37 @@ const componentIndex = {
           <form id="register-form">
               <div id='signup' class="show">
               <div>
+              <label for="nickname">Nick Name</label>
                     <input type="text" name="nickname" placeholder="Your Nick Name">
                     <div class="message-error" id="nickname-error"></div>
               </div>
                  <div>
+                    <label for="email">Email</label>
                       <input type="email" name="email" placeholder="Email">
                       <div class="message-error" id="email-error"></div>
                   </div>
                   <div>
+                     <label for="dayofbirth">Day Of Birth</label>
                       <input type="date" name="dayofbirth" placeholder="Your Day of birth">
                       <div class="message-error" id="birth-error"></div>
                   </div>
                   <div>
+                    <label for="password">Password</label>
                       <input type="password" name="password" placeholder="Password">
                       <div class="message-error" id="password-error"></div>
                   </div>
                   <div>
+                    <label for="confirm-password">Confirm Password</label>
                       <input type="password" name="confirmPassword" placeholder="Confirm password">
                       <div class="message-error" id="confirm-password-error"></div>
+                  </div>
+                  <div>
+                  <label for="gender">Gender</label>
+                        <select name="gender" id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <div class="message-error" id="gender-error"></div>
                   </div>
                   <div id="register-success" class="message-success"></div>
                   <div id="register-error" class="message-error"></div>

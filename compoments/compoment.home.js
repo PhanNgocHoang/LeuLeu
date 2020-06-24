@@ -6,12 +6,14 @@ const componentHome = {
             <a href="#" class="home">LeuLeu</a>
         </div>
         <div class="navbar-right">
+        <form id="search">
             <div class="navSearch">
                 <input class="border border-success" type="text" name="searchBar" placeholder="Tìm kiếm . . .">
-                <button class="btn">
+                <button class="btn" type="submit">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
+        </form>
             <div class="currentUser">
                 <button class="btn">
                     <i class="fa fa-bell"></i>
@@ -92,45 +94,6 @@ const componentHome = {
             <span>Bạn bè</span>
         </div>
         <div class="body-listFriend">
-            <div>
-                <div class="your-friend">
-                    <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="friendPicture">
-                                        <img src="gs://project-mxh.appspot.com/avatar/avatar-girl.jpg"
-                                            alt="pic">
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="friendInfo">
-                                        <span class="name">Friend 1</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </button>
-                    <div class="collapse action" id="action-1">
-                        <button class="btn-action">
-                            <div class="left">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="right">
-                                <span>Xem trang cá nhân</span>
-                            </div>
-                        </button>
-                        <button class="btn-action">
-                            <div class="left">
-                                <i class="fa fa-comment"></i>
-                            </div>
-                            <div class="right">
-                                <span>Chat</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     </aside>
 </section>
@@ -140,7 +103,7 @@ const componentHome = {
         <div class="createPost">
             <a href="#">
                 <img class="currentImg"
-                    src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                    src=""
                     alt="">
             </a>
             <button class="createPostBtn" data-toggle="modal" data-target="#createPostModal">
@@ -157,47 +120,67 @@ const componentHome = {
 </section>`,
 createPost: `
 <div class="modal fade" id="createPostModal">
-<form id="form-createPost">
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
             <h3>Tạo bài viết</h3>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
+        <form id="form-createPost">
         <div class="form-content">
             <div class="add-content">
                 <textarea class="form-control" row="3" name="text" id="content" placeholder="Hãy viết gì đó ..."></textarea>
+                <div class="message-error" id="content-error"></div>
             </div>
-            <div class="background-color-post">
-                <span>Chọn màu nền</span>
-                <input type="color" name="background" id="backgroundPost">
-            </div>
-            <div class="color-content-post">
-                <span>Chọn màu chữ</span>
-                <input type="color" name="color" id="colorText">
-            </div>
-            <div class="uploadPic">
-                <span>Chọn ảnh</span>
-                <input type="file" id="file" accept="image/*" hidden>
-                <label for="file">Tải ảnh</label>
-            </div>
+                <input type="file" id="file" accept="image/*" name="fileUpload">
+                <div class="message-error" id="file-error"></div>
             <div id="previewPost" class="collapse">
                 <span>Xem trước:</span>
                 <div class="previewArea">
                     <div class="contentPreview"></div>
                     <div class="picPreview">
-                        
+                    <img src="https://www.hd-freewallpapers.com/latest-wallpapers/desktop-image-of-a-parrot-wallpaper.jpg">
                     </div>
                 </div>
             </div>
         </div>
         <div class="modalFooter border border-left-0 border-right-0 border-bottom-0">
             <button type="button" class="previewBtn" data-toggle="collapse" data-target="#previewPost">Xem trước</button>
-            <button type="button" class="upload" role="submit">Đăng</button>
+            <input class="upload" class="btn btn-primary" type="submit" value="Đăng" >
+        </div>
+        </form>
+    </div>
+</div>
+</div>
+`,
+searchPage:
+` <section class="searchBody">
+<div class="search-title">
+    <span>Kết quả tìm kiếm cho </span>
+    <div class="keyWord"></div>
+</div>
+<div class="allResult">
+
+</div>
+<div class="search-footer">
+    <span>Không còn kết quả khác</span>
+</div>
+
+<!-- add friend confirm -->
+<div class="modal fade" id="addFriendRequest">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Kết bạn</h3>
+            </div>
+            <div class="add-friend-notification">
+                <span>Đã gửi yêu cầu kết bạn</span>
+            </div>
+            <div class="add-friend-setting-button">
+                <button class="btn btn-success" data-dismiss="modal">Đồng ý</button>
+            </div>
         </div>
     </div>
 </div>
-</form>
-</div>
-`
+</section>`
 }

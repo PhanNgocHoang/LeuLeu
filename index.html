@@ -17,12 +17,12 @@
 
     <!-- Google icon -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/emojionearea.min.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/body_left.css">
     <link rel="stylesheet" href="/css/body_center.css">
     <link rel="stylesheet" href="/css/navigation_bar.css">
+    <link rel="stylesheet" href="/css/search.css">
     <script src="https://cdn.rawgit.com/ashleighy/emoji.js/master/emoji.js.js"></script>
     <script src="/js/emojionearea.js"></script>
   <script src="/js/main.js"></script>
@@ -50,10 +50,6 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  
-  async function getImage() {
-    let image = await firebase.storage().ref('avatar/avatar-boy.jpg').getDownloadURL();
-  }
 </script>
     <title>MXH</title>
 </head>
