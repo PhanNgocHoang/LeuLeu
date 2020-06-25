@@ -103,6 +103,40 @@ const componentHome = {
     `,
     bodyCenter: `
     <section class="body-center">
+    <section class="profileBody" style="display: none;">
+        <div class="headerProfile">
+            <div class="backgroundImgProfile">
+                <img src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/104493659_137310848006710_4173352029415994070_n.jpg?_nc_cat=104&_nc_sid=110474&_nc_oc=AQlw8MS_11lnaA0dJjoCVyxBzOoQ6rjZwO4122OdVEWY5TyGdFDFTremECPmxvlw2eM&_nc_ht=scontent.fhan2-4.fna&oh=888eebdcaa305db71e53a763591cb8fa&oe=5F188C34" alt="">
+            </div>
+            <div class="imgProfile">
+                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D" alt="">
+            </div>
+            <div class="nameProfile">Vũ Quang Minh</div>
+        </div>
+        <div class="bodyProfile">
+            <!-- introduction -->
+            <div class="introduction">
+                <h3>Giới thiệu</h3>
+                <div class="genderProfile">
+                    Giới tính
+                    <span style="color: #28a745;">Nam</span>
+                </div>
+                <div class="dobProfile">
+                    Ngày sinh
+                    <span style="color: #28a745;">26/3/2001</span>
+                </div>
+                <div class="emailProfile">
+                    Email
+                    <span style="color: #28a745;">a@gmail.com</span>
+                </div>
+                <div class="editProfile">
+                    <button type="button" data-toggle="modal" data-target="#editBackgroundModal">Sửa ảnh nền</button>
+                    <button type="button" data-toggle="modal" data-target="#editPicModal">Sửa ảnh đại diện</button>
+                    <button type="button" data-toggle="modal" data-target="#editInfoModal">Sửa thông tin cá nhân</button>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="newsFeed">
         <div class="createPost">
             <a href="#">
@@ -143,7 +177,7 @@ createPost: `
                 <div class="previewArea">
                     <div class="contentPreview"></div>
                     <div class="picPreview">
-                    <img src="https://www.hd-freewallpapers.com/latest-wallpapers/desktop-image-of-a-parrot-wallpaper.jpg">
+                    <img src="">
                     </div>
                 </div>
             </div>
