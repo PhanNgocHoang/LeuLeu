@@ -15,6 +15,9 @@ const componentHome = {
             </div>
         </form>
             <div class="currentUser">
+                <button class="btn btnHome">
+                <i class="fa fa-home" style="font-size:36px"></i>
+                </button>
                 <button class="btn">
                     <i class="fa fa-bell"></i>
                 </button>
@@ -192,5 +195,5 @@ friendRequest: `<section class="friendRequestBody">
         </div>
         <div class="friend-request-footer">
             <span>Không còn yêu cầu khác</span>
-        </div>`
+        </div></section>`
 }

@@ -24,8 +24,6 @@ const view = {
                         controllers.login(loginInfo)
                     }
                 }
-                let body = document.getElementById('app')
-                body.style.background = "url('../images/luca-bravo-O453M2Liufs-unsplash.jpg') no-repeat;background-size: cover"
                 break
             }
             case 'register': {
@@ -132,6 +130,15 @@ const view = {
                     if (utils.checkValidData(validateResult)) {
                         await controllers.searchFriend(searchValue)
                         await view.showSearchResults(models.searchResults, searchValue.searchKey)
+                        let home = document.querySelector('.btnHome')
+                        home.onclick = () => {
+                            view.showScreens('home')
+                        }
+                        let btnLogOut = document.querySelector('#signOut')
+                        btnLogOut.onclick = (event) => {
+                            event.preventDefault()
+                            firebase.auth().signOut()
+                        }
                         let btnAddFriends = document.querySelectorAll('.addFriendResult')
                         for (let btnAdd of btnAddFriends) {
                             let addFriend = btnAdd.querySelector('#addFriend')
@@ -170,19 +177,19 @@ const view = {
                         event.preventDefault()
                         let postId = userPost.getAttribute('postId')
                         let post = models.listPost.find(post => post.id == postId)
-                            if (post.like.includes(email) == false) {
-                                controllers.updateLikes(email, postId)
+                        if (post.like.includes(email) == false) {
+                            controllers.updateLikes(email, postId)
+                            let likeNumber = userPost.querySelector('.number-like')
+                            likeNumber.innerText = parseInt(likeNumber.innerText) + 1
+                        }
+                        else {
+                            let c = confirm('Bạn đã like bài này. Bạn có muốn dislike không?')
+                            if (c == true) {
+                                controllers.dislike(email, postId)
                                 let likeNumber = userPost.querySelector('.number-like')
-                                likeNumber.innerText = parseInt(likeNumber.innerText) + 1
+                                likeNumber.innerText = parseInt(likeNumber.innerText) - 1
                             }
-                             else{
-                                let c = confirm('Bạn đã like bài này. Bạn có muốn dislike không?')
-                                if (c == true) {
-                                    controllers.dislike(email, postId)
-                                    let likeNumber = userPost.querySelector('.number-like')
-                                    likeNumber.innerText = parseInt(likeNumber.innerText) -1
-                                }
-                            }
+                        }
                     }
                     let commentBtn = userPost.querySelector('.commentBtn')
                     commentBtn.onclick = async (event) => {
@@ -211,11 +218,11 @@ const view = {
                     }
                 }
                 let btnYourProfile = document.querySelector('.your-profile')
-                btnYourProfile.onclick = async (event)=>{
+                btnYourProfile.onclick = async (event) => {
                     event.preventDefault()
-                    let yourPost =[]
-                    for (let post  of models.listPost) {
-                        if(post.owner == email){
+                    let yourPost = []
+                    for (let post of models.listPost) {
+                        if (post.owner == email) {
                             yourPost.push(post)
                         }
                     }
@@ -223,10 +230,18 @@ const view = {
                     post.innerHTML = ''
                     view.showProfile()
                     view.showListPosts(yourPost, models.friendInfo)
+                    let home = document.querySelector('.btnHome')
+                    home.onclick = () => {
+                        view.showScreens('home')
+                    }
+                    let btnLogOut = document.querySelector('#signOut')
+                    btnLogOut.onclick = (event) => {
+                        event.preventDefault()
+                        firebase.auth().signOut()
+                    }
                 }
-                let home =document.querySelector('.navbar-left')
-                home.onclick = (event) => {
-                    event.preventDefault()
+                let home = document.querySelector('.btnHome')
+                home.onclick = () => {
                     view.showScreens('home')
                 }
                 let btnLogOut = document.querySelector('#signOut')
@@ -237,25 +252,34 @@ const view = {
                 let btnFriendRequest = document.querySelector('#friendRequest')
                 btnFriendRequest.onclick = (event) => {
                     event.preventDefault()
-                    document.querySelector('.body-center').innerHTML =''
-                    document.querySelector('.body-left').innerHTML =''
+                    document.querySelector('.body-center').innerHTML = ''
+                    document.querySelector('.body-left').innerHTML = ''
                     screen.innerHTML += componentHome.friendRequest
-                    view.showFriendRequest(models.userInfo,models.listFriendsDisAgr)
+                    view.showFriendRequest(models.userInfo, models.listFriendsDisAgr)
                     let agreeBtn = document.querySelectorAll('.single-request')
                     for (let agree of agreeBtn) {
                         let aBtnAgree = agree.querySelector('#agree')
-                        aBtnAgree.onclick = (event)=>{
+                        aBtnAgree.onclick = (event) => {
                             event.preventDefault()
-                            let friendEmail= agree.querySelector('.emailRequest').innerText
+                            let friendEmail = agree.querySelector('.emailRequest').innerText
                             controllers.agreeFriendRequest(friendEmail, email)
-                        } 
+                        }
                         let btnDis = agree.querySelector('#dGree')
-                        btnDis.onclick = (event)=>{
+                        btnDis.onclick = (event) => {
                             event.preventDefault()
-                            let friendEmail= agree.querySelector('.emailRequest').innerText
+                            let friendEmail = agree.querySelector('.emailRequest').innerText
                             controllers.DisagreeFriendRequest(friendEmail, email)
-                        }               
+                        }
                     }
+                    let home = document.querySelector('.btnHome')
+                    home.onclick = () => {
+                        view.showScreens('home')
+                    }
+                    let btnLogOut = document.querySelector('#signOut')
+                        btnLogOut.onclick = (event) => {
+                            event.preventDefault()
+                            firebase.auth().signOut()
+                        }
                 }
 
             }
@@ -412,7 +436,7 @@ const view = {
                     Posts.innerHTML += contentPostHtml
                 }
             }
-            else{
+            else {
                 let ownerInfo = FriendInfo.find(userEmail => userEmail.userEmail == post.owner)
                 if (post.image == "") {
                     let contentPostHtml = `
@@ -582,8 +606,8 @@ const view = {
         <div class="otherComment">
         `;
         for (let comment of post.comment) {
-            if(comment.commentOwner == firebase.auth().currentUser.email){
-                    html += `
+            if (comment.commentOwner == firebase.auth().currentUser.email) {
+                html += `
             <div class="comment-user-1">
                 <div class="left-comment">
                     <div class="userImgComment">
@@ -604,7 +628,7 @@ const view = {
                 </div>
             </div>`
             }
-            else{
+            else {
                 let owner = userInfo.find(user => user.userEmail == comment.commentOwner)
                 html += `
                 <div class="comment-user-1">
@@ -709,7 +733,7 @@ const view = {
         `
         addFriend.innerHTML += html
     },
-    showProfile:()=>{
+    showProfile: () => {
         let bodyCenter = document.querySelector('#app')
         let html = `
         <section class="profileBody">
@@ -747,12 +771,12 @@ const view = {
         </section>`
         bodyCenter.innerHTML += html;
     },
-    showFriendRequest: (userInfo, friendRequest)=>{
+    showFriendRequest: (userInfo, friendRequest) => {
         let app = document.querySelector('.allRequest');
         friendRequest.splice(friendRequest.indexOf(firebase.auth().currentUser.email), 1);
-        let info=  []
-        for (let i=0; i<friendRequest.length; i++) {
-           info.push(userInfo.find(userInfo => userInfo.userEmail == friendRequest[i]))
+        let info = []
+        for (let i = 0; i < friendRequest.length; i++) {
+            info.push(userInfo.find(userInfo => userInfo.userEmail == friendRequest[i]))
         }
         for (let user of info) {
             let html = `
