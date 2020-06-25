@@ -5,7 +5,6 @@ const view = {
             case 'login': {
                 screen.innerHTML = componentIndex.login
                 let signInButton = document.querySelector('a')
-                let body = document.getElementsByTagName('body')
                 signInButton.onclick = () => {
                     view.showScreens('register')
                 }
