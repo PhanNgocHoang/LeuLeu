@@ -8,7 +8,7 @@ const controllers = {
                     displayName: userInfo.nickname,
                     photoURL: avatar
                 })
-                let userRegister ={
+                let userRegister = {
                     nickname: userInfo.nickname,
                     userAvatar: avatar,
                     userDoB: userInfo.dayofbirth,
@@ -32,7 +32,7 @@ const controllers = {
                     displayName: userInfo.nickname,
                     photoURL: avatar
                 })
-                let userRegister ={
+                let userRegister = {
                     nickname: userInfo.nickname,
                     userAvatar: avatar,
                     userDoB: userInfo.dayofbirth,
@@ -84,7 +84,7 @@ const controllers = {
                     }
                 }
             }
-            if (friend.status == true) {
+            if (friend.status == false) {
                 for (let i = 0; i < friend.user.length; i++) {
                     for (let j = i + 1; j < friend.user.length; j++) {
                         listFriendsDisAgr.push(friend.user[i])
@@ -172,11 +172,15 @@ const controllers = {
 
     },
     updateLikes: async (likeInfo, postId) => {
-        await firebase.firestore()
-            .collection('Post')
-            .doc(postId)
-            .update({ like: firebase.firestore.FieldValue.arrayUnion(likeInfo) })
-
+        try {
+            await firebase.firestore()
+                .collection('Post')
+                .doc(postId)
+                .update({ like: firebase.firestore.FieldValue.arrayUnion(likeInfo) })
+            alert('Bạn đã like thành công')
+        } catch (err) {
+            alert(err.message)
+        }
     },
     listFriendsInfo: async () => {
         let currentUser = firebase.auth().currentUser.email
@@ -208,10 +212,14 @@ const controllers = {
         }
     },
     dislike: async (likeInfo, postId) => {
-        await firebase.firestore()
-            .collection('Post')
-            .doc(postId)
-            .update({ like: firebase.firestore.FieldValue.arrayRemove(likeInfo) })
+        try {
+            await firebase.firestore()
+                .collection('Post')
+                .doc(postId)
+                .update({ like: firebase.firestore.FieldValue.arrayRemove(likeInfo) })
+        } catch (error) {
+            alert(error.message)
+        }
     },
     addComment: async (content, email, postId) => {
         let commentInfo = {
@@ -225,6 +233,8 @@ const controllers = {
                 .doc(postId)
                 .update({ comment: firebase.firestore.FieldValue.arrayUnion(commentInfo) })
             alert('Bạn đã comment thành công')
+            let commentNumber = userPost.querySelector('.number-comment')
+            commentNumber.innerText = parseInt(commentNumber.innerText) + 1
         } catch (err) {
             alert(err.message)
         }
@@ -237,19 +247,79 @@ const controllers = {
         let fileLink = await firebase.storage().ref(filePath).getDownloadURL()
         return fileLink
     },
-    getUserProfile: async()=>{
+    getUserProfile: async () => {
         let allUser = await firebase.firestore()
             .collection('Users')
             .get()
         let result = utils.getDataFromDocs(allUser.docs)
         models.saveUserInfo(result)
     },
-    getMyInfo: async(email)=>{
-        let result = await firebase.firestore()
-            .collection('Users')
-            .where('userEmail', '==', email)
+    setupPostChange: async () => {
+        let isFirstRun = true
+        for (let i = 0; i < models.listFriends.length; i++) {
+            firebase.firestore()
+                .collection('Post')
+                .where('owner', '==', models.listFriends[i])
+                .onSnapshot((snapshot) => {
+                    if (isFirstRun) {
+                        isFirstRun = false
+                        return
+                    }
+                    let docChanges = snapshot.docChanges()
+                    for (docChange of docChanges) {
+                        let type = docChange.type
+                        let doc = docChange.doc
+                        let post = utils.getDataFromDoc(doc)
+                        if (type == 'modified') {
+                            models.updatePost(post)
+                            if (models.currentPost && models.currentPost.id == post.id) {
+                                view.showComment(models.currentPost, models.userInfo)
+                                view.showListPosts(models.listPost)
+                            }
+                        }
+                        if (type == 'added') {
+                            models.updatePost(post)
+                            view.showComment()
+                            view.showListPosts(models.listPost)
+                        }
+                    }
+                })
+        }
+    },
+    agreeFriendRequest:async(friendEmail, email)=>{
+        let user = [friendEmail, email]
+        try {
+            let result = await firebase.firestore()
+            .collection('Friends')
+            .where('user', '==', user)
             .get()
-        let Info = utils.getDataFromDocs(result.docs)
-        models.saveYourInfo(Info)
+        let friend = utils.getDataFromDocs(result.docs)
+        let friendId = friend[0].id
+            firebase.firestore()
+                .collection('Friends')
+                .doc(friendId)
+                .update({status: true})
+        alert('Xác nhận bạn bè thành công')
+        }catch(err) {
+            alert(err.message)
+        }
+    },
+    DisagreeFriendRequest:async(friendEmail, email) => {
+        let user = [friendEmail, email]
+        try {
+            let result = await firebase.firestore()
+            .collection('Friends')
+            .where('user', '==', user)
+            .get()
+        let friend = utils.getDataFromDocs(result.docs)
+        let friendId = friend[0].id
+            firebase.firestore()
+                .collection('Friends')
+                .doc(friendId)
+                .delete()
+        alert('Bạn đã từ chối xác nhận bạn bè')
+        }catch(err) {
+            alert(err.message)
+        }
     }
 }

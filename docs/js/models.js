@@ -7,7 +7,6 @@ const models = {
     friendInfo: null,
     searchResults: null,
     userInfo: null,
-    myInfo: null,
     saveListFriends(listFriends){
         models.listFriends = listFriends;
     },
@@ -29,7 +28,21 @@ const models = {
     saveUserInfo(userInfo){
         models.userInfo = userInfo;
     },
-    saveYourInfo(myInfo){
-        models.myInfo = myInfo;
+    updatePost(newPost){
+        if(models.currentPost && models.currentPost.id === newPost.id)
+        {
+            models.saveCurrentPost(newPost)
+        }
+        if(models.listPost){
+            let indexPost = models.listPost.findIndex((item)=>{
+                return item.id === newPost.id
+            })
+            if(indexPost >= 0){
+                models.listPost.splice(indexPost, 1, newPost)
+            }
+            else{
+                models.listPost.push(newPost)
+            }
+        }
     }
 }

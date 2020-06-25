@@ -5,6 +5,7 @@ const view = {
             case 'login': {
                 screen.innerHTML = componentIndex.login
                 let signInButton = document.querySelector('a')
+                let body = document.getElementsByTagName('body')
                 signInButton.onclick = () => {
                     view.showScreens('register')
                 }
@@ -64,6 +65,7 @@ const view = {
                 var email = firebase.auth().currentUser.email
                 var avatar = firebase.auth().currentUser.photoURL
                 var avatarUser = document.querySelector('.currentImg')
+                document.querySelector('.avatar').src = avatar
                 var avatarUserDetail = document.querySelector('.resImage')
                 avatarUserDetail.src = avatar
                 avatarUser.src = avatar
@@ -168,17 +170,19 @@ const view = {
                         event.preventDefault()
                         let postId = userPost.getAttribute('postId')
                         let post = models.listPost.find(post => post.id == postId)
-                        for (let like of post.like) {
-                            if (like == email) {
+                            if (post.like.includes(email) == false) {
+                                controllers.updateLikes(email, postId)
+                                let likeNumber = userPost.querySelector('.number-like')
+                                likeNumber.innerText = parseInt(likeNumber.innerText) + 1
+                            }
+                             else{
                                 let c = confirm('Bạn đã like bài này. Bạn có muốn dislike không?')
-                                if (c === true) {
+                                if (c == true) {
                                     controllers.dislike(email, postId)
+                                    let likeNumber = userPost.querySelector('.number-like')
+                                    likeNumber.innerText = parseInt(likeNumber.innerText) -1
                                 }
                             }
-                            else {
-                                controllers.updateLikes(email, postId)
-                            }
-                        }
                     }
                     let commentBtn = userPost.querySelector('.commentBtn')
                     commentBtn.onclick = async (event) => {
@@ -186,8 +190,10 @@ const view = {
                         let postInfo = {
                             id: userPost.getAttribute('postId'),
                         }
-                        controllers.getComment(postInfo)
-                        await view.showComment(models.currentPost, models.userInfo)
+                        controllers.getComment(postInfo.id)
+                        let post = models.listPost.find(post => post.id == postInfo.id)
+                        controllers.setupPostChange(models.currentPost)
+                        await view.showComment(post, models.userInfo, post.id)
                         let formCmt = userPost.querySelector('#commentForm')
                         formCmt.onsubmit = (event) => {
                             event.preventDefault()
@@ -207,70 +213,16 @@ const view = {
                 let btnYourProfile = document.querySelector('.your-profile')
                 btnYourProfile.onclick = async (event)=>{
                     event.preventDefault()
-                    let bodyCenter = document.querySelector('.body-center')
-                    screen.removeChild(bodyCenter)
-                    screen.innerHTML += componentHome.profile + componentHome.createPost
-                    await controllers.getMyInfo(email)
-                    let profileAvatar = document.querySelector('.profile-image')
-                    profileAvatar.src = avatar
-                    document.querySelector('.createImage').src = avatar
-                    utils.setText('.nameProfile', nickname)
-                    let background = document.querySelector('.background-image')
-                    background.src = models.myInfo[0].background
-                    utils.setText('#gender', models.myInfo[0].userGender)
-                    utils.setText('#dob', models.myInfo[0].userDofB)
-                    utils.setText('#email', models.myInfo[0].userEmail)
                     let yourPost =[]
                     for (let post  of models.listPost) {
                         if(post.owner == email){
                             yourPost.push(post)
                         }
                     }
-                    view.showListPosts(yourPost, models.myInfo[0])
-                    let userPosts = document.querySelectorAll('.userPost')
-                    for (const userPost of userPosts) {
-                        let likeBtn = userPost.querySelector('.likeBtn')
-                        likeBtn.onclick = (event) => {
-                            event.preventDefault()
-                            let postId = userPost.getAttribute('postId')
-                            let post = models.listPost.find(post => post.id == postId)
-                            for (let like of post.like) {
-                                if (like == email) {
-                                    let c = confirm('Bạn đã like bài này. Bạn có muốn dislike không?')
-                                    if (c === true) {
-                                        controllers.dislike(email, postId)
-                                    }
-                                }
-                                else {
-                                    controllers.updateLikes(email, postId)
-                                }
-                            }
-                        }
-                        let commentBtn = userPost.querySelector('.commentBtn')
-                        commentBtn.onclick = async (event) => {
-                            event.preventDefault()
-                            let postInfo = {
-                                id: userPost.getAttribute('postId'),
-                            }
-                            controllers.getComment(postInfo)
-                            await view.showComment(models.currentPost, models.userInfo)
-                            let formCmt = userPost.querySelector('#commentForm')
-                            formCmt.onsubmit = (event) => {
-                                event.preventDefault()
-                                let cmtInfo = {
-                                    content: formCmt.comment.value.trim()
-                                }
-                                let validateResult = [
-                                    utils.validateData(cmtInfo.content, '#content-error', 'Missing comment content')
-                                ]
-                                if (utils.checkValidData(validateResult)) {
-                                    controllers.addComment(cmtInfo.content, email, postInfo.id)
-                                    userPost.querySelector('#commentContent').value = ''
-                                }
-                            }
-                        }
-                    }
-
+                    let post = document.querySelector('.userPost')
+                    post.innerHTML = ''
+                    view.showProfile()
+                    view.showListPosts(yourPost, models.friendInfo)
                 }
                 let home =document.querySelector('.navbar-left')
                 home.onclick = (event) => {
@@ -281,6 +233,29 @@ const view = {
                 btnLogOut.onclick = (event) => {
                     event.preventDefault()
                     firebase.auth().signOut()
+                }
+                let btnFriendRequest = document.querySelector('#friendRequest')
+                btnFriendRequest.onclick = (event) => {
+                    event.preventDefault()
+                    document.querySelector('.body-center').innerHTML =''
+                    document.querySelector('.body-left').innerHTML =''
+                    screen.innerHTML += componentHome.friendRequest
+                    view.showFriendRequest(models.userInfo,models.listFriendsDisAgr)
+                    let agreeBtn = document.querySelectorAll('.single-request')
+                    for (let agree of agreeBtn) {
+                        let aBtnAgree = agree.querySelector('#agree')
+                        aBtnAgree.onclick = (event)=>{
+                            event.preventDefault()
+                            let friendEmail= agree.querySelector('.emailRequest').innerText
+                            controllers.agreeFriendRequest(friendEmail, email)
+                        } 
+                        let btnDis = agree.querySelector('#dGree')
+                        btnDis.onclick = (event)=>{
+                            event.preventDefault()
+                            let friendEmail= agree.querySelector('.emailRequest').innerText
+                            controllers.DisagreeFriendRequest(friendEmail, email)
+                        }               
+                    }
                 }
 
             }
@@ -327,7 +302,7 @@ const view = {
                             <div class="footer-userPost">
                                 <div class="reaction-number">
                                     <div class="like-userPost-number">
-                                        <a href="#" data-toggle="modal" data-target="#likePostUser">
+                                        <a href="#" data-toggle="modal" data-target="#likePostUser" class="likeNumber">
                                             <i class="fa fa-thumbs-up" style="color: #28a745; font-size: 20px;"></i>
                                             <div class="number-like">${post.like.length}</div>
                                         </a>
@@ -588,13 +563,13 @@ const view = {
             }
         }
     },
-    showComment(post, userInfo) {
-        let userPost = document.querySelector('div[postId=' + post.id + ']')
+    showComment(post, userInfo, postId) {
+        let userPost = document.querySelector('.userPost[postId=' + postId + ']')
         let allComment = userPost.querySelector('.allComment')
         let html = `
         <div class="selfComment border border-left-0 border-top-0 border-right-0">
             <div class="currentImgComment">
-                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D" alt="">
+                <img src="${firebase.auth().currentUser.photoURL}" alt="">
             </div>
             <div class="inputComment">
             <form id="commentForm">
@@ -607,16 +582,16 @@ const view = {
         <div class="otherComment">
         `;
         for (let comment of post.comment) {
-            let userComment = userInfo.find(ownerComment => ownerComment.userEmail == comment.commentOwner)
-            html += `
+            if(comment.commentOwner == firebase.auth().currentUser.email){
+                    html += `
             <div class="comment-user-1">
                 <div class="left-comment">
                     <div class="userImgComment">
-                        <img src="${userComment.userAvatar}" alt="">
+                        <img src="${firebase.auth().currentUser.photoURL}" alt="">
                     </div>
                     <div>
                         <div class="content-comment">
-                            <a href="#" class="name">${userComment.nickName}</a>
+                            <a href="#" class="name">${firebase.auth().currentUser.displayName}</a>
                             <span>${comment.commentContent}</span>
                         </div>
                         <div class="react-comment">
@@ -628,7 +603,30 @@ const view = {
                     <button class="btn">...</button>
                 </div>
             </div>`
-
+            }
+            else{
+                let owner = userInfo.find(user => user.userEmail == comment.commentOwner)
+                html += `
+                <div class="comment-user-1">
+                    <div class="left-comment">
+                        <div class="userImgComment">
+                            <img src="${owner.userAvatar}" alt="">
+                        </div>
+                        <div>
+                            <div class="content-comment">
+                                <a href="#" class="name">${owner.nickName}</a>
+                                <span>${comment.commentContent}</span>
+                            </div>
+                            <div class="react-comment">
+                                <div class="timeDetail">${new Date(comment.createAt).toLocaleString()}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-comment">
+                        <button class="btn">...</button>
+                    </div>
+                </div>`
+            }
         }
         html += `</div>`
         allComment.innerHTML = html
@@ -710,6 +708,72 @@ const view = {
         </div>
         `
         addFriend.innerHTML += html
+    },
+    showProfile:()=>{
+        let bodyCenter = document.querySelector('#app')
+        let html = `
+        <section class="profileBody">
+        <div class="headerProfile">
+            <div class="backgroundImgProfile">
+                <img src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/104493659_137310848006710_4173352029415994070_n.jpg?_nc_cat=104&_nc_sid=110474&_nc_oc=AQlw8MS_11lnaA0dJjoCVyxBzOoQ6rjZwO4122OdVEWY5TyGdFDFTremECPmxvlw2eM&_nc_ht=scontent.fhan2-4.fna&oh=888eebdcaa305db71e53a763591cb8fa&oe=5F188C34" alt="">
+            </div>
+            <div class="imgProfile">
+                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D" alt="">
+            </div>
+            <div class="nameProfile">Vũ Quang Minh</div>
+        </div>
+        <div class="bodyProfile">
+            <!-- introduction -->
+            <div class="introduction">
+                <h3>Giới thiệu</h3>
+                <div class="genderProfile">
+                    Giới tính
+                    <span style="color: #28a745;">Nam</span>
+                </div>
+                <div class="dobProfile">
+                    Ngày sinh
+                    <span style="color: #28a745;">26/3/2001</span>
+                </div>
+                <div class="emailProfile">
+                    Email
+                    <span style="color: #28a745;">a@gmail.com</span>
+                </div>
+                <div class="editProfile">
+                    <button type="button" data-toggle="modal" data-target="#editBackgroundModal">Sửa ảnh nền</button>
+                    <button type="button" data-toggle="modal" data-target="#editPicModal">Sửa ảnh đại diện</button>
+                    <button type="button" data-toggle="modal" data-target="#editInfoModal">Sửa thông tin cá nhân</button>
+                </div>
+            </div>
+        </section>`
+        bodyCenter.innerHTML += html;
+    },
+    showFriendRequest: (userInfo, friendRequest)=>{
+        let app = document.querySelector('.allRequest');
+        friendRequest.splice(friendRequest.indexOf(firebase.auth().currentUser.email), 1);
+        let info=  []
+        for (let i=0; i<friendRequest.length; i++) {
+           info.push(userInfo.find(userInfo => userInfo.userEmail == friendRequest[i]))
+        }
+        for (let user of info) {
+            let html = `
+            <div class="single-request border border-left-0 border-right-0 border-bottom-0">
+                <div class="imgUserRequest">
+                    <img src="${user.userAvatar}" alt="">
+                </div>
+                <div class="infoUserRequest">
+                    <span class="nameRequest">${user.nickName}</span>
+                    <span class="emailRequest">${user.userEmail}</span>
+                </div>
+                <div class="settingFriendRequest">
+                    <button type="button" data-toggle="modal" data-target="#exceptFriendRequest" id="agree">
+                        <i class="material-icons" style="color: #28a745;">done</i>
+                    </button>
+                    <button type="button" data-toggle="modal" data-target="#declineFriendRequest" id="dGree">
+                        <i class="material-icons" style="color: red;">clear</i>
+                    </button>
+                </div>
+            </div>`
+            app.innerHTML += html
+        }
     }
-
 }

@@ -1,0 +1,161 @@
+/* Friend request */
+
+/* friend request body */
+.friend-request-title{
+    width: 60%;
+    background-color: #ffffff;
+    height: 70px;
+    margin-left: 325px;
+    margin-top: 65px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.friend-request-title>span{
+    color: #28a745;
+    font-size: 25px;
+}
+.allRequest{
+    width: 60%;
+    background-color: #ffffff;
+    margin-left: 325px;
+}
+.single-request{
+    display: flex;
+    padding: 10px;
+    height: 130px;
+}
+.imgUserRequest{
+    width: 20%;
+    padding-left: 50px;
+    padding-top: 15px;
+}
+.imgUserRequest>img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    border: solid 1px #28a745;
+}
+.infoUserRequest{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.nameRequest{
+    color: #28a745;
+    font-size: 25px;
+    padding-top: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nameRequest:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.emailRequest{
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+/* setting friend button */
+.settingFriendRequest{
+    display: flex;
+    width: 10%;
+}
+.settingFriendRequest>button{
+    background-color: #ffffff;
+    border: none;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+}
+.settingFriendRequest>button>i{
+    font-size: 30px;
+}
+
+/* friend request footer */
+.friend-request-footer{
+    height: 100px;
+    width: 60%;
+    margin-bottom: 0px;
+    margin-left: 325px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.friend-request-footer>span{
+    color: #28a745;
+    font-size: 20px;
+}
+
+/* modal friend request */
+.request-friend-notification{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+.request-friend-notification>span{
+    font-size: 15px;
+    padding-top: 10px;
+}
+.request-friend-setting-button{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+.request-friend-setting-button>button{
+    height: 30px;
+}
+
+/* responsive */
+@media screen and (max-width:1100px){
+    .friend-request-title{
+        width: auto;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .allRequest{
+        width: auto;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .friend-request-footer{
+        width: auto;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .single-request{
+        height: 90px;
+    }
+    .friend-request-title>span{
+        font-size: 15px;
+    }
+    .infoUserRequest{
+        width: 60%;
+    }
+    .imgUserRequest{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .imgUserRequest>img{
+        width: 40px;
+        height: 40px;
+    }
+    .nameRequest{
+        font-size: 15px;
+        padding-top: 10px;
+    }
+    .emailRequest{
+        font-size: 10px;
+    }
+    .friend-request-footer>span{
+        color: #28a745;
+        font-size: 15px;
+    }
+    .settingFriendRequest>button>i{
+        font-size: 20px;
+    }
+}

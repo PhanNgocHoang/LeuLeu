@@ -1,0 +1,1404 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- W3school -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Font awesome 4-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./docs/css/index.css">
+    <link rel="stylesheet" href="./docs/css/main.css">
+    <link rel="stylesheet" href="./docs/css/body_left.css">
+    <link rel="stylesheet" href="./docs/css/body_center.css">
+    <link rel="stylesheet" href="./docs/css/navigation_bar.css">
+    <link rel="stylesheet" href="./docs/css/search.css">
+    <link rel="stylesheet" href="./docs/css/profile.css">
+    <link rel="stylesheet" href="./docs/css/friend-request.css">
+  <script src="./js/main.js"></script>
+  <script src="./js/models.js"></script>
+  <script src="./js/views.js"></script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/controllers.js"></script>
+  <script src="./compoments/compoment.index.js"></script>
+  <script src="./compoments/compoment.home.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Nav bar -->
+    <section class="navigationBar">
+        <nav class="navbar navbar-expand-sm bg-success navbar-dark fixed-top">
+            <div class="navbar-left">
+                <a href="#" class="home">LeuLeu</a>
+            </div>
+            <div class="navbar-right">
+                <div class="navSearch">
+                    <input class="border border-success" type="text" name="searchBar" placeholder=" Tìm kiếm . . .">
+                    <button class="btn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div class="currentUser">
+                    <button class="btn">
+                        <i class="fa fa-bell"></i>
+                        <div class="number-alert-notification" style="background-color: red;color: #ffffff;">1</div>
+                    </button>
+                    <button class="btn">
+                        <i class="fa fa-users"></i>
+                        <div class="number-alert-friend" style="background-color: red;color: #ffffff;">1</div>
+                    </button>
+                    <button class="btn">
+                        <i class="fa fa-comment"></i>
+                        <div class="number-alert-message" style="background-color: red;color: #ffffff;">1</div>
+                    </button>
+                    <button class="btn">
+                        <div class="currentEmail">
+                            <img class="currentImg"
+                                src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                alt="">
+                            <span class="currentLink">Vũ Quang Minh</span>
+                        </div>
+                    </button>
+                    <button class="btn">
+                        <i class="fa fa-sign-out"></i>
+                    </button>
+                </div>
+
+                <!-- responsive navbar -->
+                <div class="menu">
+                    <button class="btn btn-success" data-toggle="collapse" data-target="#menuButton">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="menu-responsive collapse border" id="menuButton">
+                        <div class="currentUserDetail border border-top-0 border-left-0 border-right-0">
+                            <div class="currentImgDetail">
+                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                    alt="">
+                            </div>
+                            <div class="currentName">Vũ Quang Minh</div>
+                            <button class="btn btn-success">Xem trang cá nhân</button>
+                        </div>
+                        <div class="navSearch border border-top-0 border-left-0 border-right-0">
+                            <input class="border border-success" type="text" name="searchBar"
+                                placeholder=" Tìm kiếm . . .">
+                            <button class="btn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="notification">
+                            <button class="btn">
+                                <i class="fa fa-bell"></i>
+                                <div class="number-alert-friend" style="background-color: red;color: #ffffff;">1</div>
+                                <span style="color: #ffffff;padding-left: 5px;width: 100%;">Thông báo</span>
+                            </button>
+                        </div>
+                        <div class="friendRequest">
+                            <button class="btn">
+                                <i class="fa fa-users"></i>
+                                <div class="number-alert-friend" style="background-color: red;color: #ffffff;">1</div>
+                                <span style="color: #ffffff;padding-left: 5px;width: 100%;">Bạn bè</span>
+                            </button>
+                        </div>
+                        <div class="messages">
+                            <button class="btn">
+                                <i class="fa fa-comment"></i>
+                                <div class="number-alert-message" style="background-color: red;color: #ffffff;">1</div>
+                                <span style="color: #ffffff;padding-left: 5px;width: 100%;">Chat</span>
+                            </button>
+                        </div>
+                        <div class="signOut">
+                            <button class="btn">
+                                <i class="fa fa-sign-out"></i>
+                                <span style="color: #ffffff;padding-left: 5px;width: 100%;">Đăng xuất</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Body -->
+    <section class="postBody">
+        <!-- Body left -->
+        <section class="body-left">
+            <aside class="list-friend">
+                <div class="title-listFriend">
+                    <span>Bạn bè</span>
+                </div>
+                <div class="body-listFriend">
+                    <div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-1">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-2">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-2">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-3">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-3">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-4">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-5">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-5">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-6">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-6">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-7">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-7">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-1">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-1">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-1">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-1">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-1">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-1">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="your-friend">
+                            <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="friendPicture">
+                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                    alt="pic">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="friendInfo">
+                                                <span class="name">Friend 1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="collapse action" id="action-1">
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Xem trang cá nhân</span>
+                                    </div>
+                                </button>
+                                <button class="btn-action">
+                                    <div class="left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="right">
+                                        <span>Chat</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Body center -->
+        <section class="body-center">
+            <!-- profile -->
+            <section class="profileBody">
+                <div class="headerProfile">
+                    <div class="backgroundImgProfile">
+                        <img src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/104493659_137310848006710_4173352029415994070_n.jpg?_nc_cat=104&_nc_sid=110474&_nc_oc=AQlw8MS_11lnaA0dJjoCVyxBzOoQ6rjZwO4122OdVEWY5TyGdFDFTremECPmxvlw2eM&_nc_ht=scontent.fhan2-4.fna&oh=888eebdcaa305db71e53a763591cb8fa&oe=5F188C34" alt="">
+                    </div>
+                    <div class="imgProfile">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D" alt="">
+                    </div>
+                    <div class="nameProfile">Vũ Quang Minh</div>
+                </div>
+                <div class="bodyProfile">
+                    <!-- introduction -->
+                    <div class="introduction">
+                        <h3>Giới thiệu</h3>
+                        <div class="genderProfile">
+                            Giới tính
+                            <span style="color: #28a745;">Nam</span>
+                        </div>
+                        <div class="dobProfile">
+                            Ngày sinh
+                            <span style="color: #28a745;">26/3/2001</span>
+                        </div>
+                        <div class="emailProfile">
+                            Email
+                            <span style="color: #28a745;">a@gmail.com</span>
+                        </div>
+                        <div class="editProfile">
+                            <button type="button" data-toggle="modal" data-target="#editBackgroundModal">Sửa ảnh nền</button>
+                            <button type="button" data-toggle="modal" data-target="#editPicModal">Sửa ảnh đại diện</button>
+                            <button type="button" data-toggle="modal" data-target="#editInfoModal">Sửa thông tin cá nhân</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- create post modal -->
+                <div class="modal fade" id="createPostModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Tạo bài viết</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="form-content">
+                                <div class="add-content">
+                                    <textarea class="form-control" name="text" placeholder="Hãy viết gì đó ..."></textarea>
+                                </div>
+                                <div class="background-color-post">
+                                    <span>Chọn màu nền</span>
+                                    <input type="color" value="#ffffff">
+                                </div>
+                                <div class="color-content-post">
+                                    <span>Chọn màu chữ</span>
+                                    <input type="color" value="#000000">
+                                </div>
+                                <div class="uploadPic">
+                                    <span>Chọn ảnh</span>
+                                    <input type="file" id="file" accept="image/*" hidden>
+                                    <label for="file">Tải ảnh</label>
+                                </div>
+                                <div id="previewPost" class="collapse">
+                                    <span>Xem trước:</span>
+                                    <div class="previewArea">
+                                        <div class="contentPreview">okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+                                        <div class="picPreview">
+                                            <img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t1.15752-0/p280x280/103833129_265083201477769_8692333083300381149_n.jpg?_nc_cat=107&_nc_sid=b96e70&_nc_oc=AQk7aXQvkglZp_iCJt2MgwpRELZeOtkRHw6_0lpEu7c7O1XGoRZix6zZwR3o6htqSBI&_nc_ht=scontent.fhan2-5.fna&_nc_tp=6&oh=79e9bc2081b8fe3ba6ec5f168e10a7b1&oe=5F139D59" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modalFooter border border-left-0 border-right-0 border-bottom-0">
+                                <button type="button" class="previewBtn" data-toggle="collapse" data-target="#previewPost">Xem trước</button>
+                                <button type="button" class="upload">Đăng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- edit background modal -->
+                <div class="modal fade" id="editBackgroundModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Tạo bài viết</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="form-content">
+                                <div class="uploadPic" style="padding-top: 10px;">
+                                    <span>Chọn ảnh nền</span>
+                                    <input type="file" id="file" accept="image/*" hidden>
+                                    <label for="file">Tải ảnh</label>
+                                </div>
+                                <div id="previewPost" class="collapse">
+                                    <span>Xem trước:</span>
+                                    <div class="previewArea">
+                                        <div class="picPreview">
+                                            <img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t1.15752-0/p280x280/103833129_265083201477769_8692333083300381149_n.jpg?_nc_cat=107&_nc_sid=b96e70&_nc_oc=AQk7aXQvkglZp_iCJt2MgwpRELZeOtkRHw6_0lpEu7c7O1XGoRZix6zZwR3o6htqSBI&_nc_ht=scontent.fhan2-5.fna&_nc_tp=6&oh=79e9bc2081b8fe3ba6ec5f168e10a7b1&oe=5F139D59" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modalFooter border border-left-0 border-right-0 border-bottom-0">
+                                <button type="button" class="previewBtn" data-toggle="collapse" data-target="#previewPost">Xem trước</button>
+                                <button type="button" class="upload">Đăng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- edit pic modal -->
+                <div class="modal fade" id="editPicModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Tạo bài viết</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="form-content">
+                                <div class="uploadPic" style="padding-top: 10px;">
+                                    <span>Chọn ảnh đại diện</span>
+                                    <input type="file" id="file" accept="image/*" hidden>
+                                    <label for="file">Tải ảnh</label>
+                                </div>
+                                <div id="previewPost" class="collapse">
+                                    <span>Xem trước:</span>
+                                    <div class="previewArea">
+                                        <div class="picPreview">
+                                            <img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t1.15752-0/p280x280/103833129_265083201477769_8692333083300381149_n.jpg?_nc_cat=107&_nc_sid=b96e70&_nc_oc=AQk7aXQvkglZp_iCJt2MgwpRELZeOtkRHw6_0lpEu7c7O1XGoRZix6zZwR3o6htqSBI&_nc_ht=scontent.fhan2-5.fna&_nc_tp=6&oh=79e9bc2081b8fe3ba6ec5f168e10a7b1&oe=5F139D59" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modalFooter border border-left-0 border-right-0 border-bottom-0">
+                                <button type="button" class="previewBtn" data-toggle="collapse" data-target="#previewPost">Xem trước</button>
+                                <button type="button" class="upload">Đăng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- edit info modal -->
+                <div class="modal fade" id="editInfoModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Tạo bài viết</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="form-content">
+                                <div class="editGender">
+                                    <span>Nhập giới tính</span>
+                                    <form action="/action_page.php">
+                                        <select class="custom-select mb-3">
+                                            <option selected>Chọn giới tính</option>
+                                            <option value="volvo">Nam</option>
+                                            <option value="fiat">Nữ</option>
+                                            <option value="audi">Khác</option>
+                                        </select>
+                                    </form>
+                                </div>
+                                <div class="editDob">
+                                    <span>Nhập ngày sinh</span>
+                                    <form action="/action_page.php">
+                                        <input type="date">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modalFooter border border-left-0 border-right-0 border-bottom-0">
+                                <button type="button" class="upload">Sửa</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- thêm style margin-top 665px khi hiện trang cá nhân -->
+            <div class="newsFeed" style="margin-top: 665px;">
+                <div class="createPost">
+                    <a href="#">
+                        <img class="currentImg"
+                            src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                    </a>
+                    <button class="createPostBtn" data-toggle="modal" data-target="#createPostModal">
+                        <span>Đăng bài viết</span>
+                    </button>
+                </div>
+                <div class="post">
+                    <div class="userPost">
+                        <div class="header-userPost">
+                            <div class="userInfo">
+                                <a href="#">
+                                    <img class="userImg"
+                                        src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                        alt="">
+                                </a>
+                                <div class="userStatus">
+                                    <div class="statusDetail">
+                                        <a href="#">
+                                            <span class="userName">Vũ Quang Minh</span>
+                                        </a>
+                                        <span class="status"> đã cập nhật ảnh đại diện</span>
+                                    </div>
+                                    <div class="timeDetail" style="font-size: 12px;">
+                                        15 giờ
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-setting">
+                                <button class="btn">
+                                    <span>...</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="body-userPost">
+                            <div class="contentPost">
+                                Hello mọi người, hôm nay mình mới vào LeuLeu chơi nên mọi người add mình nhe
+                            </div>
+                            <div class="content-updatePic">
+                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                    alt="">
+                            </div>
+                            <div class="content-addPic"></div>
+                        </div>
+                        <div class="footer-userPost">
+                            <div class="reaction-number">
+                                <div class="like-userPost-number">
+                                    <a href="#" data-toggle="modal" data-target="#likePostUser">
+                                        <i class="fa fa-thumbs-up" style="color: #28a745; font-size: 20px;"></i>
+                                        <div class="number-like">100</div>
+                                    </a>
+                                </div>
+                                <div class="comment-userPost-number">
+                                    <a href="#">
+                                        <div class="number-comment">2</div>
+                                        <span>bình luận </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="react border border-left-0 border-right-0">
+                                <div class="like-userPost">
+                                    <button class="likeBtn">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <span>Thích</span>
+                                    </button>
+                                </div>
+                                <div class="comment-userPost">
+                                    <button class="commentBtn">
+                                        <i class="material-icons">chat_bubble_outline</i>
+                                        <span>Comment</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="allComment">
+                                <div class="selfComment border border-left-0 border-top-0 border-right-0">
+                                    <div class="currentImgComment">
+                                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                            alt="">
+                                    </div>
+                                    <div class="inputComment">
+                                        <input type="text" name="comment" placeholder="  Hãy nhập bình luận . . .">
+                                    </div>
+                                </div>
+                                <div class="otherComment">
+                                    <div class="comment-user-1">
+                                        <div class="left-comment">
+                                            <div class="userImgComment">
+                                                <img src="https://scontent.fhph1-2.fna.fbcdn.net/v/t1.0-9/100906661_10157758034774234_2781386823492522160_o.jpg?_nc_cat=1&_nc_sid=8024bb&_nc_oc=AQkNkxKvbJex-lLw1YlA8LwTvOwkC3wQB87g7BwRLP3Y3URIdUQSPyu6xJ42cKC3QLE&_nc_ht=scontent.fhph1-2.fna&oh=82e8de58b57e43ee0b6c5a8e87ff6e67&oe=5F05D598"
+                                                    alt="">
+                                            </div>
+                                            <div>
+                                                <div class="content-comment">
+                                                    <a href="#" class="name">Lynk Lee</a>
+                                                    <span>Hello bạn mình cũng vừa qua đây nè</span>
+                                                </div>
+                                                <div class="react-comment">
+                                                    <a href="#">Thích</a>
+                                                    <a href="#">Trả lời</a>
+                                                    <div class="timeDetail">12/7/2020</div>
+                                                    <div class="react-comment-number">
+                                                        <a href="#" data-toggle="modal" data-target="#likeCommentUser">
+                                                            <i class="fa fa-thumbs-up"
+                                                                style="color: #28a745; font-size: 20px;"></i>
+                                                            <div class="number-like">1</div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="all-reply">
+                                                    <div class="reply-user-1">
+                                                        <div class="reply-left">
+                                                            <div class="userImgReply">
+                                                                <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                                    alt="">
+                                                            </div>
+                                                            <div>
+                                                                <div class="content-reply">
+                                                                    <a href="#" class="name">Vũ Quang Minh</a>
+                                                                    <span>Oke bạn</span>
+                                                                </div>
+                                                                <div class="react-reply">
+                                                                    <a href="#">Thích</a>
+                                                                    <div class="timeDetail">12/7/2020</div>
+                                                                    <div class="react-reply-number">
+                                                                        <a href="#" data-toggle="modal"
+                                                                            data-target="#likeReplyUser">
+                                                                            <i class="fa fa-thumbs-up"
+                                                                                style="color: #28a745; font-size: 20px;"></i>
+                                                                            <div class="number-like">1</div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="reply-right">
+                                                            <button class="btn">...</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyInput">
+                                                        <div class="selfUserImgReply">
+                                                            <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="inputReply">
+                                                            <input type="text" name="reply"
+                                                                placeholder="  Trả lời . . .">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right-comment">
+                                            <button class="btn">...</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userPost">
+                        <div class="header-userPost">
+                            <div class="userInfo">
+                                <a href="#">
+                                    <img class="userImg"
+                                        src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/102412960_2602770543370427_8349433843557323099_n.jpg?_nc_cat=110&_nc_sid=85a577&_nc_oc=AQkKs9geLWpdg5ihp8i8vkjEaBZELbyOd2dhmKCz9Aq6GgtEx8SfRaVv1TeDCLDlRbg&_nc_ht=scontent.fhan2-4.fna&oh=e360fa2c1cdd5670ab00326de87f1ed9&oe=5F1172B2"
+                                        alt="">
+                                </a>
+                                <div class="userStatus">
+                                    <div class="statusDetail">
+                                        <a href="#">
+                                            <span class="userName">Lê Nam</span>
+                                        </a>
+                                        <span class="status"></span>
+                                    </div>
+                                    <div class="timeDetail" style="font-size: 12px;">18/6/2020</div>
+                                </div>
+                            </div>
+                            <div class="user-setting">
+                                <button class="btn">
+                                    <span>...</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="body-userPost">
+                            <div class="contentPost">?</div>
+                            <div class="content-addPic">
+                                <img src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/104171942_1289362014602378_3309276621135600655_n.png?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQkfXEdZ7VQ-FDwNl_kqoiSX9PMj3NFOy0JZFkO_Tvmh60Oj1Dqy2rzAahjBD108G4g&_nc_ht=scontent.fhan2-4.fna&oh=b83432e2b4d4d3c92a532ff68155b527&oe=5F118321"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="footer-userPost">
+                            <div class="reaction-number">
+                                <div class="like-userPost-number">
+                                    <a href="#" data-toggle="modal" data-target="#likePostUser">
+                                        <i class="fa fa-thumbs-up" style="color: #28a745; font-size: 20px;"></i>
+                                        <div class="number-like">100</div>
+                                    </a>
+                                </div>
+                                <div class="comment-userPost-number"></div>
+                            </div>
+                            <div class="react border border-left-0 border-right-0">
+                                <div class="like-userPost">
+                                    <button class="likeBtn">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <span>Thích</span>
+                                    </button>
+                                </div>
+                                <div class="comment-userPost">
+                                    <button class="commentBtn">
+                                        <i class="material-icons">chat_bubble_outline</i>
+                                        <span>Comment</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="allComment">
+                                <div class="selfComment border border-left-0 border-top-0 border-right-0">
+                                    <div class="currentImgComment">
+                                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                            alt="">
+                                    </div>
+                                    <div class="inputComment">
+                                        <input type="text" name="comment" placeholder="  Hãy nhập bình luận . . .">
+                                    </div>
+                                </div>
+                                <div class="otherComment"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userPost">
+                        <div class="header-userPost">
+                            <div class="userInfo">
+                                <a href="#">
+                                    <img class="userImg"
+                                        src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-0/p370x247/94381830_690836551673956_414962349816938496_n.jpg?_nc_cat=102&_nc_sid=85a577&_nc_oc=AQkHkQQkdqMdE28cZ70lEm7o5nh0vgGjhmUuOsm0G5bJuVwkoEhbjShwsG4tiaI2SIo&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=6343831308163b0ae58c74c3ab75e233&oe=5F10972D"
+                                        alt="">
+                                </a>
+                                <div class="userStatus">
+                                    <div class="statusDetail">
+                                        <a href="#">
+                                            <span class="userName">Kelly Hoàng Anh</span>
+                                        </a>
+                                        <span class="status"></span>
+                                    </div>
+                                    <div class="timeDetail" style="font-size: 12px;">18/6/2020</div>
+                                </div>
+                            </div>
+                            <div class="user-setting">
+                                <button class="btn">
+                                    <span>...</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="body-userPost">
+                            <div class="contentPost">
+                                ĐIỀU GÌ SẼ XẢY RA NẾU NHƯ MỸ KHÔNG RÚT KHỎI VIỆT NAM?
+                                Câu hỏi trên Quora, trả lời bởi Lusia Millar
+                                Vâng. Câu hỏi của bạn có nghĩa là nếu Mỹ không rút khỏi Việt Nam vào năm 1973 và sau đó
+                                điều gì sẽ xảy ra! Tôi nghĩ sức mạnh thuộc về Mỹ nhưng thời gian thuộc về Việt Nam.
+                                Thứ nhất, mọi người đều biết rằng người Việt Nam với ý chí và sự quyết tâm sẽ luôn chiến
+                                đấu bằng bất cứ giá nào để giành được độc lập và thống nhất đất nước. Vì vậy, họ hoàn
+                                toàn khác xa so với Triều Tiên. Trong cuộc chiến tranh Triều Tiên, Triều Tiên phụ thuộc
+                                nhiều vào Trung Quốc nên họ không thể từ chối chấp nhận yêu cầu của Trung Quốc. Nhưng ở
+                                Việt Nam, người Việt Nam đã chiến đấu để giải phóng và giành độc lập bằng bất cứ giá
+                                nào.
+                                Thứ hai, nếu tôi có thể nói, tôi nghĩ tôi sẽ cố đoán xem rằng Mỹ có thể sẵn sàng trụ lại
+                                ở miền Nam Việt Nam trong bao lâu?
+                                Thứ ba, Mỹ có thể phải chi bao nhiêu tiền cho cuộc chiến tranh giữa Việt-Mỹ?
+                                Thứ tư, có bao nhiêu Tổng thống Mỹ có thể phải liều mình mạo hiểm cho cuộc bầu cử tiếp
+                                theo của họ?
+                                Thứ năm, bức tường của đài tưởng niệm binh lính Mỹ sẽ dài bao nhiêu?
+                                Thứ sáu, có bao nhiêu người Mỹ có thể bị giết
+                                Thứ bảy, liệu có bao nhiêu cuộc biểu tình phản đối chiến tranh của người Mỹ?
+                                Thứ tám, chế độ Nam Việt Nam có đáng cho sự hy sinh của người Mỹ không?
+                                Dù sớm hay muộn, Việt Nam cũng sẽ giải phóng và thống nhất đất nước.
+                            </div>
+                            <div class="content-addPic">
+                                <img src="https://scontent.fhan2-6.fna.fbcdn.net/v/t1.0-9/104409474_263822961516930_1191012648262656396_n.jpg?_nc_cat=104&_nc_sid=ca434c&_nc_oc=AQm-I45UYgjjtGbATQe5DJujCvOt8tI3q3b3OTlaGwRxUdMVwlpq8btgURXcxFgyoRU&_nc_ht=scontent.fhan2-6.fna&oh=05d20ec1bb1357e196301e8c0e88be4c&oe=5F0FB349"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="footer-userPost">
+                            <div class="reaction-number">
+                                <div class="like-userPost-number">
+                                    <a href="#" data-toggle="modal" data-target="#likePostUser">
+                                        <i class="fa fa-thumbs-up" style="color: #28a745; font-size: 20px;"></i>
+                                        <div class="number-like">100</div>
+                                    </a>
+                                </div>
+                                <div class="comment-userPost-number"></div>
+                            </div>
+                            <div class="react border border-left-0 border-right-0">
+                                <div class="like-userPost">
+                                    <button class="likeBtn">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        <span>Thích</span>
+                                    </button>
+                                </div>
+                                <div class="comment-userPost">
+                                    <button class="commentBtn">
+                                        <i class="material-icons">chat_bubble_outline</i>
+                                        <span>Comment</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="allComment">
+                                <div class="selfComment border border-left-0 border-top-0 border-right-0">
+                                    <div class="currentImgComment">
+                                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                                            alt="">
+                                    </div>
+                                    <div class="inputComment">
+                                        <input type="text" name="comment" placeholder="  Hãy nhập bình luận . . .">
+                                    </div>
+                                </div>
+                                <div class="otherComment"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Modal create post -->
+    <div class="modal fade" id="createPostModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Tạo bài viết</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="form-content">
+                    <div class="add-content">
+                        <textarea class="form-control" name="text" placeholder="Hãy viết gì đó ..."></textarea>
+                    </div>
+                    <div class="background-color-post">
+                        <span>Chọn màu nền</span>
+                        <input type="color" value="#ffffff">
+                    </div>
+                    <div class="color-content-post">
+                        <span>Chọn màu chữ</span>
+                        <input type="color" value="#000000">
+                    </div>
+                    <div class="uploadPic">
+                        <span>Chọn ảnh</span>
+                        <input type="file" id="file" accept="image/*" hidden>
+                        <label for="file">Tải ảnh</label>
+                    </div>
+                    <div id="previewPost" class="collapse">
+                        <span>Xem trước:</span>
+                        <div class="previewArea">
+                            <div class="contentPreview">
+                                okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                            </div>
+                            <div class="picPreview">
+                                <img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t1.15752-0/p280x280/103833129_265083201477769_8692333083300381149_n.jpg?_nc_cat=107&_nc_sid=b96e70&_nc_oc=AQk7aXQvkglZp_iCJt2MgwpRELZeOtkRHw6_0lpEu7c7O1XGoRZix6zZwR3o6htqSBI&_nc_ht=scontent.fhan2-5.fna&_nc_tp=6&oh=79e9bc2081b8fe3ba6ec5f168e10a7b1&oe=5F139D59"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modalFooter border border-left-0 border-right-0 border-bottom-0">
+                    <button type="button" class="previewBtn" data-toggle="collapse" data-target="#previewPost">Xem
+                        trước</button>
+                    <button type="button" class="upload">Đăng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal like post -->
+    <div class="modal fade" id="likePostUser">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Tất cả 100</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="user-like-post-1">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 1</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                    <div class="user-like-post-2">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 2</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal like comment -->
+    <div class="modal fade" id="likeCommentUser">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Tất cả 1</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="user-like-comment-1">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 1</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal like reply comment -->
+    <div class="modal fade" id="likeReplyUser">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Tất cả 1</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="user-like-reply-1">
+                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-1/p160x160/92824120_829689567538246_7546079727425945600_n.jpg?_nc_cat=102&_nc_sid=dbb9e7&_nc_oc=AQnUlCWOJLvOqpw5-8gDBz8U7RToIcqBxrEDKylUvT5Pg1nUZO13rQOQCX_YXq7QuBw&_nc_ht=scontent.fhan2-1.fna&_nc_tp=6&oh=2ce09fc05a0e7483b765fc92b24498ca&oe=5F04FA3D"
+                            alt="">
+                        <div class="name">
+                            <a href="#">Friend 1</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
