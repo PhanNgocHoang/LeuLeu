@@ -100,7 +100,6 @@ const controllers = {
     },
     searchFriend: async (searchValue) => {
         let searchKey = searchValue.searchKey
-        let arraySearch = []
         let result = await firebase.firestore()
             .collection('Users')
             .where('nickName', '==', searchKey)
@@ -208,7 +207,7 @@ const controllers = {
                 .collection('Friends')
                 .add(newFriend)
         } catch (err) {
-            console.log(err)
+            alert(err.message)
         }
     },
     dislike: async (likeInfo, postId) => {
@@ -233,8 +232,6 @@ const controllers = {
                 .doc(postId)
                 .update({ comment: firebase.firestore.FieldValue.arrayUnion(commentInfo) })
             alert('Bạn đã comment thành công')
-            let commentNumber = userPost.querySelector('.number-comment')
-            commentNumber.innerText = parseInt(commentNumber.innerText) + 1
         } catch (err) {
             alert(err.message)
         }
