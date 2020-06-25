@@ -243,5 +243,13 @@ const controllers = {
             .get()
         let result = utils.getDataFromDocs(allUser.docs)
         models.saveUserInfo(result)
+    },
+    getMyInfo: async(email)=>{
+        let result = await firebase.firestore()
+            .collection('Users')
+            .where('userEmail', '==', email)
+            .get()
+        let Info = utils.getDataFromDocs(result.docs)
+        models.saveYourInfo(Info)
     }
 }

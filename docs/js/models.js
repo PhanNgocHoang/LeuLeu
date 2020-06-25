@@ -7,6 +7,7 @@ const models = {
     friendInfo: null,
     searchResults: null,
     userInfo: null,
+    myInfo: null,
     saveListFriends(listFriends){
         models.listFriends = listFriends;
     },
@@ -27,5 +28,8 @@ const models = {
     },
     saveUserInfo(userInfo){
         models.userInfo = userInfo;
+    },
+    saveYourInfo(myInfo){
+        models.myInfo = myInfo;
     }
 }

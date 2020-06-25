@@ -64,8 +64,11 @@ const view = {
                 var email = firebase.auth().currentUser.email
                 var avatar = firebase.auth().currentUser.photoURL
                 var avatarUser = document.querySelector('.currentImg')
+                var avatarUserDetail = document.querySelector('.resImage')
+                avatarUserDetail.src = avatar
                 avatarUser.src = avatar
                 utils.setText('.currentLink', nickname)
+                utils.setText('.currentName', nickname)
                 await controllers.loadListFriends(email)
                 await controllers.loadPost(email)
                 await controllers.listFriendsInfo()
@@ -147,11 +150,6 @@ const view = {
                         }
                     }
                 }
-                let btnLogOut = document.querySelector('#signOut')
-                btnLogOut.onclick = (event) => {
-                    event.preventDefault()
-                    firebase.auth().signOut()
-                }
                 view.showListFriend(models.friendInfo)
                 let listFriend = document.querySelectorAll('.your-friend')
                 for (let friend of listFriend) {
@@ -205,6 +203,84 @@ const view = {
                             }
                         }
                     }
+                }
+                let btnYourProfile = document.querySelector('.your-profile')
+                btnYourProfile.onclick = async (event)=>{
+                    event.preventDefault()
+                    let bodyCenter = document.querySelector('.body-center')
+                    screen.removeChild(bodyCenter)
+                    screen.innerHTML += componentHome.profile + componentHome.createPost
+                    await controllers.getMyInfo(email)
+                    let profileAvatar = document.querySelector('.profile-image')
+                    profileAvatar.src = avatar
+                    document.querySelector('.createImage').src = avatar
+                    utils.setText('.nameProfile', nickname)
+                    let background = document.querySelector('.background-image')
+                    background.src = models.myInfo[0].background
+                    utils.setText('#gender', models.myInfo[0].userGender)
+                    utils.setText('#dob', models.myInfo[0].userDofB)
+                    utils.setText('#email', models.myInfo[0].userEmail)
+                    let yourPost =[]
+                    for (let post  of models.listPost) {
+                        if(post.owner == email){
+                            yourPost.push(post)
+                        }
+                    }
+                    view.showListPosts(yourPost, models.myInfo[0])
+                    let userPosts = document.querySelectorAll('.userPost')
+                    for (const userPost of userPosts) {
+                        let likeBtn = userPost.querySelector('.likeBtn')
+                        likeBtn.onclick = (event) => {
+                            event.preventDefault()
+                            let postId = userPost.getAttribute('postId')
+                            let post = models.listPost.find(post => post.id == postId)
+                            for (let like of post.like) {
+                                if (like == email) {
+                                    let c = confirm('Bạn đã like bài này. Bạn có muốn dislike không?')
+                                    if (c === true) {
+                                        controllers.dislike(email, postId)
+                                    }
+                                }
+                                else {
+                                    controllers.updateLikes(email, postId)
+                                }
+                            }
+                        }
+                        let commentBtn = userPost.querySelector('.commentBtn')
+                        commentBtn.onclick = async (event) => {
+                            event.preventDefault()
+                            let postInfo = {
+                                id: userPost.getAttribute('postId'),
+                            }
+                            controllers.getComment(postInfo)
+                            await view.showComment(models.currentPost, models.userInfo)
+                            let formCmt = userPost.querySelector('#commentForm')
+                            formCmt.onsubmit = (event) => {
+                                event.preventDefault()
+                                let cmtInfo = {
+                                    content: formCmt.comment.value.trim()
+                                }
+                                let validateResult = [
+                                    utils.validateData(cmtInfo.content, '#content-error', 'Missing comment content')
+                                ]
+                                if (utils.checkValidData(validateResult)) {
+                                    controllers.addComment(cmtInfo.content, email, postInfo.id)
+                                    userPost.querySelector('#commentContent').value = ''
+                                }
+                            }
+                        }
+                    }
+
+                }
+                let home =document.querySelector('.navbar-left')
+                home.onclick = (event) => {
+                    event.preventDefault()
+                    view.showScreens('home')
+                }
+                let btnLogOut = document.querySelector('#signOut')
+                btnLogOut.onclick = (event) => {
+                    event.preventDefault()
+                    firebase.auth().signOut()
                 }
 
             }
