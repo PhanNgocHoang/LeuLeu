@@ -24,7 +24,7 @@ const componentHome = {
                 <button class="btn" id="friendRequest">
                     <i class="fa fa-users"></i>
                 </button>
-                <button class="btn">
+                <button class="btn" id="conversation">
                     <i class="fa fa-comment"></i>
                 </button>
                 <button class="btn your-profile">
@@ -229,5 +229,106 @@ friendRequest: `<section class="friendRequestBody">
         </div>
         <div class="friend-request-footer">
             <span>Không còn yêu cầu khác</span>
-        </div></section>`
+        </div></section>`,
+conversation: `
+<section class="chatBody">
+        <!-- Body left -->
+    <section class="body-left">
+        <aside class="list-friend">
+            <div class="title-listFriend">
+                <span>Hội thoại</span>
+            </div>
+            <div class="body-listFriend">
+                <div>
+                    <div class="your-friend">
+                        <button class="friendInfoBtn" data-toggle="collapse" data-target="#action-1">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="friendPicture">
+                                            <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t1.0-0/p110x80/82008883_546715626054912_125966992745168896_o.jpg?_nc_cat=109&_nc_sid=7aed08&_nc_oc=AQlJu2zr7JEKW3boHtuQiL43Q6Wh5GAeCaTzO6fmW5rSm9E66k8hG70wfoOH3ZuIYa0&_nc_ht=scontent.fhan2-3.fna&_nc_tp=6&oh=91013029b43b926f9baa41915cc72fd9&oe=5F160131"
+                                                alt="pic">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="friendInfo">
+                                            <span class="name">Trần Nam</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </section>
+        <!-- chat form -->
+        <div class="chatForm">
+            <!-- responsive header -->
+            <div class="chatHeader border border-left-0 border-right-0 border-top-0">
+                <div class="conversationImgUser">
+                    <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t1.0-0/p110x80/82008883_546715626054912_125966992745168896_o.jpg?_nc_cat=109&_nc_sid=7aed08&_nc_oc=AQlJu2zr7JEKW3boHtuQiL43Q6Wh5GAeCaTzO6fmW5rSm9E66k8hG70wfoOH3ZuIYa0&_nc_ht=scontent.fhan2-3.fna&_nc_tp=6&oh=91013029b43b926f9baa41915cc72fd9&oe=5F160131" alt="">
+                </div>
+                <div class="conversationTitle">
+                    <button class="profileUser">Trần Nam</button>
+                    <button class="deleteConversationTop" data-toggle="modal" data-target="#delete-conversation">
+                        <i class="material-icons">block</i>
+                    </button>
+                </div>
+            </div>
+            <div class="allMessage">
+                <div class="message">
+                    <span class="message-user">Trần Nam</span>
+                    <span class="message-content">Chào bạn</span>
+                </div>
+                <div class="message-owner">
+                    <span class="message-content-owner">Ừ chào bạn</span>
+                </div>
+            </div>
+            <div class="inputMessage border border-left-0 border-right-0 boder-bottom-0">
+                <form class="inputForm">
+                    <input type="text" placeholder="  Nhập tin nhắn ...">
+                </form>
+                <div class="sendMessage">
+                    <button>
+                        <i class="fa fa-paper-plane-o" style="color: #28a745;font-size: 30px;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- conversation detail -->
+        <div class="conversationDetail">
+            <div class="conversationInfo border border-left-0 border-right-0 boder-top-0">
+                <div class="conversationImgUser">
+                    <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t1.0-0/p110x80/82008883_546715626054912_125966992745168896_o.jpg?_nc_cat=109&_nc_sid=7aed08&_nc_oc=AQlJu2zr7JEKW3boHtuQiL43Q6Wh5GAeCaTzO6fmW5rSm9E66k8hG70wfoOH3ZuIYa0&_nc_ht=scontent.fhan2-3.fna&_nc_tp=6&oh=91013029b43b926f9baa41915cc72fd9&oe=5F160131" alt="">
+                </div>
+                <div class="conversationTitle">
+                    <button class="profileUser">Trần Nam</button>
+                </div>
+            </div>
+            <div class="emailUserDetail">Email: nam66@gmail.com</div>
+            <button class="deleteConversationBottom" data-toggle="modal" data-target="#delete-conversation">Xóa cuộc hội thoại</button>
+        </div>
+
+        <!-- delete conversation modal -->
+        <div class="modal fade" id="delete-conversation">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Xóa cuộc hội thoại ?</h3>
+                    </div>
+                    <div class="warning-delete">
+                        <span style="color: red;">Lưu ý:</span>
+                        <span>Hành động này không thể hoàn tác</span>
+                    </div>
+                    <div class="notification-setting-button">
+                        <button class="btn btn-success">Đồng ý</button>
+                        <button class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>`
 }

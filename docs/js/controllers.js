@@ -288,6 +288,7 @@ const controllers = {
     },
     agreeFriendRequest:async(friendEmail, email)=>{
         let user = [friendEmail, email]
+        let createAt = new Date().toISOString()
         try {
             let result = await firebase.firestore()
             .collection('Friends')
@@ -300,6 +301,12 @@ const controllers = {
                 .doc(friendId)
                 .update({status: true})
         alert('Xác nhận bạn bè thành công')
+        // let conversation ={
+        //     messages: [],
+        //     createAt: createAt,
+        //     users: user,
+        //     tile:[]
+        // }
         }catch(err) {
             alert(err.message)
         }

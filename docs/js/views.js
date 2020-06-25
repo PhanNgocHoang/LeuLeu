@@ -299,6 +299,22 @@ const view = {
                         firebase.auth().signOut()
                     }
                 }
+                let conversation = document.querySelector('#conversation')
+                conversation.onclick = (event) => {
+                    event.preventDefault()
+                    document.querySelector('.body-center').style.display = 'none'
+                    document.querySelector('.body-left').style.display = 'none'
+                    screen.innerHTML += componentHome.conversation
+                    let home = document.querySelector('.btnHome')
+                    home.onclick = () => {
+                        view.showScreens('home')
+                    }
+                    let btnLogOut = document.querySelector('#signOut')
+                    btnLogOut.onclick = (event) => {
+                        event.preventDefault()
+                        firebase.auth().signOut()
+                    }
+                }
 
             }
         }
